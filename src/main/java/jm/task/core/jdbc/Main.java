@@ -2,6 +2,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.sql.Connection;
@@ -16,7 +17,8 @@ public class Main {
         User user3 = new User("Nick3", "Gr3", (byte) 16);
         User user4 = new User("Nick4", "Gr4", (byte) 100);
 
-        UserServiceImpl userService = new UserServiceImpl();
+        UserService userService = new UserServiceImpl();
+
 
         try {
             userService.createUsersTable();

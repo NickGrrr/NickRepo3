@@ -30,8 +30,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement = connection.prepareStatement(tableCreate);
 
             preparedStatement.executeUpdate();
+            connection.commit();
 
         } catch (SQLException e) {
+            connection.rollback();
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -53,7 +55,9 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement = connection.prepareStatement(tableDrop);
 
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
+            connection.rollback();
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -80,8 +84,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement.setByte(3, age);
 
             preparedStatement.executeUpdate();
+            connection.commit();
 
         } catch (SQLException e) {
+            connection.rollback();
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -106,8 +112,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement.setLong(1, id);
 
             preparedStatement.executeUpdate();
+            connection.commit();
 
         } catch (SQLException e) {
+            connection.rollback();
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -165,7 +173,9 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement = connection.prepareStatement(cleanTable);
 
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
+            connection.rollback();
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
