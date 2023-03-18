@@ -20,7 +20,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
 
-        String tableCreate = "CREATE TABLE IF NOT EXISTS users ("
+        String tableCreate = "CREATE TABLE IF NOT EXISTS user ("
                 + "id BIGINT NOT NULL AUTO_INCREMENT,"
                 + "name VARCHAR(255),"
                 + "lastName VARCHAR(255),"
@@ -49,7 +49,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
 
-        String tableDrop = "DROP TABLE IF EXISTS users";
+        String tableDrop = "DROP TABLE IF EXISTS user";
 
         try {
             preparedStatement = connection.prepareStatement(tableDrop);
@@ -74,7 +74,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
 
-        String addUser = "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";
+        String addUser = "INSERT INTO user (name, lastName, age) VALUES (?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(addUser);
@@ -104,7 +104,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
 
-        String removeUserByID = "DELETE FROM users WHERE ID=?";
+        String removeUserByID = "DELETE FROM user WHERE ID=?";
 
         try {
             preparedStatement = connection.prepareStatement(removeUserByID);
@@ -134,7 +134,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         List<User> usersList = new ArrayList<>();
         Statement statement = null;
 
-        String getAllUsers = "SELECT id, name, lastName, age FROM users";
+        String getAllUsers = "SELECT id, name, lastName, age FROM user";
 
         try {
             statement = connection.createStatement();
@@ -167,7 +167,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
 
-        String cleanTable = "TRUNCATE TABLE users";
+        String cleanTable = "TRUNCATE TABLE user";
 
         try {
             preparedStatement = connection.prepareStatement(cleanTable);

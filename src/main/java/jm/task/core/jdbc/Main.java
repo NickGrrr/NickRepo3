@@ -1,9 +1,12 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,7 +22,6 @@ public class Main {
 
         UserService userService = new UserServiceImpl();
 
-
         try {
             userService.createUsersTable();
             System.out.println("Таблица создалась");
@@ -27,26 +29,27 @@ public class Main {
             e.printStackTrace();
         }
 
-
-
         try {
             userService.saveUser(user1.getName(), user1.getLastName(), user1.getAge());
             System.out.println("User с именем - " + user1.getName() + " добавлен в базу данных");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         try {
             userService.saveUser(user2.getName(), user2.getLastName(), user2.getAge());
             System.out.println("User с именем - " + user2.getName() + " добавлен в базу данных");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         try {
             userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge());
             System.out.println("User с именем - " + user3.getName() + " добавлен в базу данных");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         try {
             userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
             System.out.println("User с именем - " + user4.getName() + " добавлен в базу данных");
@@ -83,7 +86,7 @@ public class Main {
             e.printStackTrace();
         }
 
-
+        Util.closeSession();
         // реализуйте алгоритм здесь
     }
 }
